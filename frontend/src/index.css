@@ -2,6 +2,10 @@ main {
   min-height: 80vh;
 }
 
-footer {
-  border-top: thin red;
+h3 {
+  padding: 1rem;
+}
+
+.rating span {
+  margin: 0.1rem;
 }
