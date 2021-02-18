@@ -1,39 +1,30 @@
 import React from 'react';
-import {
-  Button,
-  Navbar,
-  NavbarBrand,
-  Nav,
-  NavDropdown,
-  Form,
-  FormControl,
-  Container
-} from 'react-bootstrap';
-import {
-  AiOutlineUser,
-  AiOutlineLogin,
-  AiOutlineShop,
-  AiOutlineShoppingCart
-} from 'react-icons/ai';
+import { LinkContainer } from 'react-router-bootstrap';
+import { Navbar, Nav, Container } from 'react-bootstrap';
+import { AiOutlineUser, AiOutlineShoppingCart } from 'react-icons/ai';
 
 const Header = () => {
   return (
     <header>
       <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
         <Container>
-          <Navbar.Brand href='/'>Kangadelic</Navbar.Brand>
+          <LinkContainer to='/'>
+            <Navbar.Brand>Kangadelic</Navbar.Brand>
+          </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ml-auto'>
-              <Nav.Link href='/cart'>
-                {' '}
-                <AiOutlineShoppingCart /> Cart
-              </Nav.Link>
+              <LinkContainer to='/cart'>
+                <Nav.Link>
+                  <AiOutlineShoppingCart /> Cart
+                </Nav.Link>
+              </LinkContainer>
 
-              <Nav.Link href='/login'>
-                {' '}
-                <AiOutlineUser /> Sign In
-              </Nav.Link>
+              <LinkContainer to='/login'>
+                <Nav.Link>
+                  <AiOutlineUser /> Sign In
+                </Nav.Link>
+              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </Container>
