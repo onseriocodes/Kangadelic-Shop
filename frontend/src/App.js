@@ -1,12 +1,18 @@
 import React from 'react';
-import { Button, Navbar } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 const App = () => {
   return (
     <>
-      <Navbar bg='light'>
-        <Navbar.Brand>Khangadelic</Navbar.Brand>
-      </Navbar>
+      <Header />
+      <main className='py-3'>
+        <Container>
+          <h1>Welcome To Kangadelic</h1>
+        </Container>
+      </main>
+      <Footer />
     </>
   );
 };
