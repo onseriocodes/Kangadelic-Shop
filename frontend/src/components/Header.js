@@ -6,10 +6,10 @@ import { AiOutlineUser, AiOutlineShoppingCart } from 'react-icons/ai';
 const Header = () => {
   return (
     <header>
-      <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
+      <Navbar id='navi' variant='dark' expand='lg' collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
-            <Navbar.Brand>Kangadelic</Navbar.Brand>
+            <Navbar.Brand>Kangadelic Shop</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
