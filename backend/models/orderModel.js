@@ -1,14 +1,12 @@
 //! ORDER MODEL:
 import mongoose from 'mongoose';
-import Product from '../../frontend/src/components/Product';
-import { string, number } from '../../frontend/node_modules/@types/prop-types';
 
 const orderSchema = mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: User
+      ref: 'User'
     },
     orderItems: [
       {
@@ -19,7 +17,7 @@ const orderSchema = mongoose.Schema(
         product: {
           type: mongoose.Schema.Types.ObjectId,
           required: true,
-          ref: Product
+          ref: 'Product'
         }
       }
     ],
