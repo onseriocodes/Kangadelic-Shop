@@ -1,54 +1,56 @@
-//! CART SCREEN
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { FaTrashAlt } from 'react-icons/fa';
 import {
   Row,
   Col,
   ListGroup,
   Image,
   Form,
-  Card,
-  Button
+  Button,
+  Card
 } from 'react-bootstrap';
-import { FaTrashAlt } from 'react-icons/fa';
+import { addToCart, removeFromCart } from '../actions/cartActions';
 import Message from '../components/Message';
-import { addToCart } from '../actions/cartActions';
 
 const CartScreen = ({ match, location, history }) => {
-  // Get ID from the URL:
+  // get productId from the url:
   const productId = match.params.id;
 
-  // Get quantity from URL:
   const qty = location.search ? Number(location.search.split('=')[1]) : 1;
 
   const dispatch = useDispatch();
 
-  // Grab from state:
+  // Get redux state from store:
   const cart = useSelector(state => state.cart);
+
+  // destructure:
   const { cartItems } = cart;
 
+  // useEffect:
   useEffect(() => {
     if (productId) {
       dispatch(addToCart(productId, qty));
     }
   }, [dispatch, productId, qty]);
 
-  // REMOVE FROM CART HANDLER:
   const removeFromCartHandler = id => {
-    console.log('remove');
+    dispatch(removeFromCart(id));
   };
 
-  // CHECKOUT HANDLER:
   const checkOutHandler = () => {
     history.push('/login?redirect=shipping');
   };
 
   return (
     <Row>
+      {/* SHOPPING CART COLUMN */}
       <Col md={8}>
-        <h1 className='screenHeader'>Shopping Cart</h1>
-        {/* Check to see if anything in cart */}
+        <h1 className='screenHeader' style={{ textAlign: 'center' }}>
+          Shopping Cart
+        </h1>
+        {/* check to see if anything in cart */}
         {cartItems.length === 0 ? (
           <Message>
             Your cart is empty <Link to='/'>Go Back</Link>{' '}
@@ -97,8 +99,12 @@ const CartScreen = ({ match, location, history }) => {
           </ListGroup>
         )}
       </Col>
+
+      {/* ORDERS COLUMN */}
       <Col md={4}>
-        <h1 className='screenHeader'>Order(s)</h1>
+        <h1 className='screenHeader' style={{ textAlign: 'center' }}>
+          Order(s)
+        </h1>
         <Card>
           <ListGroup variant='flush'>
             <ListGroup.Item>
@@ -123,6 +129,9 @@ const CartScreen = ({ match, location, history }) => {
               >
                 Proceed to chekout
               </Button>
+              <Link style={{ textAlign: 'center' }} to='/'>
+                Continue Shopping
+              </Link>
             </ListGroup.Item>
           </ListGroup>
         </Card>
