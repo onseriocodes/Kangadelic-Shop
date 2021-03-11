@@ -92,16 +92,16 @@ const RegisterScreen = ({ location, history }) => {
         <Button type='submit' variant='outline-success' className='btn-block'>
           Register
         </Button>
-
-        <Row className='py-3'>
-          <Col>
-            Already have an account?{' '}
-            <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
-              Login
-            </Link>
-          </Col>
-        </Row>
       </Form>
+
+      <Row className='py-3'>
+        <Col>
+          Already have an account?{' '}
+          <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
+            Login
+          </Link>
+        </Col>
+      </Row>
     </FormContainer>
   );
 };
