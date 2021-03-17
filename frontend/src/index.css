@@ -49,3 +49,7 @@ h2 {
     margin: 20px 0 0 50%;
   }
 }
+
+#orders {
+  border-left: 1px dotted #3a4042;
+}

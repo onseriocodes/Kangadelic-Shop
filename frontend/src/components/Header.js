@@ -26,7 +26,7 @@ const Header = () => {
             <Nav className='ml-auto'>
               <LinkContainer to='/cart'>
                 <Nav.Link>
-                  <AiOutlineShoppingCart /> Cart
+                  <AiOutlineShoppingCart />
                 </Nav.Link>
               </LinkContainer>
 

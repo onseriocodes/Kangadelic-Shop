@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import FormContainer from '../components/FormContainer';
-import { getUserDetails } from '../actions/userActions';
+import { getUserDetails, updateUserProfile } from '../actions/userActions';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 
@@ -24,6 +24,10 @@ const ProfileScreen = ({ location, history }) => {
   // GET USER LOGIN FROM STATE:
   const userLogin = useSelector(state => state.userLogin);
   const { userInfo } = userLogin;
+
+  // GET UPDATED USER PROFILE FROM STATE:
+  const userUpdateProfile = useSelector(state => state.userUpdateProfile);
+  const { success } = userUpdateProfile;
 
   useEffect(() => {
     if (!userInfo) {
@@ -45,6 +49,7 @@ const ProfileScreen = ({ location, history }) => {
       setMessage('Passwords do not match');
     } else {
       //!  DISPATCH UPDATE PROFILE
+      dispatch(updateUserProfile({ id: user._id, name, email, password }));
     }
   };
 
@@ -54,6 +59,7 @@ const ProfileScreen = ({ location, history }) => {
         <h2 style={{ textAlign: 'center' }}> User Profile</h2>
         {message && <Message variant='danger'>{message}</Message>}
         {error && <Message variant='danger'>{error}</Message>}
+        {success && <Message variant='success'>Profile Updated</Message>}
         {loading && <Loader />}
         <Form onSubmit={onSubmitHandler}>
           {/* NAME FIELD */}
@@ -100,12 +106,12 @@ const ProfileScreen = ({ location, history }) => {
             />
           </Form.Group>
 
-          <Button type='submit' variant='outline-success' className='btn-block'>
+          <Button type='submit' variant='outline-info' className='btn-block'>
             Update
           </Button>
         </Form>
       </Col>
-      <Col md={9}>
+      <Col id='orders' md={9}>
         <h2>My Orders</h2>
       </Col>
     </Row>
