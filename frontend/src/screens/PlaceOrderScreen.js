@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import CheckoutSteps from '../components/CheckoutSteps';
 
-const PlaceOrder = () => {
+const PlaceOrderScreen = () => {
   const cart = useSelector(state => state.cart);
 
   // CALCULATE PRICES
@@ -88,7 +88,7 @@ const PlaceOrder = () => {
           <Card>
             <ListGroup variant='flush'>
               <ListGroup.Item>
-                <h2>Order Summary</h2>
+                <h2 className='heading'>Order Summary</h2>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
@@ -133,4 +133,4 @@ const PlaceOrder = () => {
   );
 };
 
-export default PlaceOrder;
+export default PlaceOrderScreen;
