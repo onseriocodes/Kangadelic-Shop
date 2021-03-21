@@ -8,6 +8,7 @@ import connectDB from './config/db.js';
 // IMPORTED ROUTES:
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
 
 // INITIALIZE ENVIROMENT VARIABLES:
 dotenv.config();
@@ -21,7 +22,7 @@ const app = express();
 // BODY PARSER:
 app.use(express.json());
 
-// ROUTES:
+// ROUTE:
 app.get('/', (req, res) => {
   res.send('API is running...');
 });
@@ -29,6 +30,7 @@ app.get('/', (req, res) => {
 //! MOUNTED ROUTES:
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/orders', orderRoutes);
 
 // ERROR CUSTOM MIDDLEWARE:
 app.use(notFound);
