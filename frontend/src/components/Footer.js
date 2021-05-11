@@ -8,7 +8,7 @@ const Footer = () => {
         <Row>
           <Col className='text-center py-3'>
             Copyright &copy; Kangadelic 2021, All rights reserved{' '}
-            <a href='https://onseriocodes.com/'>onseriocodes.com</a>
+            <a href='https://onseriocodes.com/'>ONSERIOCODES LLC.</a>
           </Col>
         </Row>
       </Container>

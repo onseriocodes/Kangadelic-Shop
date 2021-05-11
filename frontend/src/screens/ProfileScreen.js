@@ -3,13 +3,15 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Form, Button, Row, Col, Table } from 'react-bootstrap';
+import { Form, Row, Col, Table } from 'react-bootstrap';
+import { Button } from 'shards-react';
 import FormContainer from '../components/FormContainer';
 import { getUserDetails, updateUserProfile } from '../actions/userActions';
 import { listMyOrders } from '../actions/orderActions';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { FaTimes, FaCheck } from 'react-icons/fa';
+import { Badge } from 'shards-react';
 
 const ProfileScreen = ({ location, history }) => {
   const [name, setName] = useState('');
@@ -114,7 +116,7 @@ const ProfileScreen = ({ location, history }) => {
             />
           </Form.Group>
 
-          <Button type='submit' variant='outline-info' className='btn-block'>
+          <Button type='submit' theme='info' className='btn-block'>
             Update
           </Button>
         </Form>
@@ -129,11 +131,11 @@ const ProfileScreen = ({ location, history }) => {
           <Table striped bordered hover responsive className='table-sm'>
             <thead>
               <tr>
-                <th>ID</th>
+                <th>ORDER ID</th>
                 <th>DATE</th>
                 <th>TOTAL</th>
-                <th>PAID</th>
-                <th>DELIVERD</th>
+                <th>PAID ON</th>
+                <th>DELIVERED</th>
                 <th></th>
               </tr>
             </thead>
@@ -143,23 +145,29 @@ const ProfileScreen = ({ location, history }) => {
                   <td>{order._id}</td>
                   <td>{order.createdAt.substring(0, 10)}</td>
                   <td>${order.totalPrice}</td>
-                  <td>
+                  <td className='paid'>
                     {order.isPaid ? (
-                      order.paidAt.substring(0, 10)
+                      <Badge theme='success'>
+                        {order.paidAt.substring(0, 10)}
+                      </Badge>
                     ) : (
-                      <FaTimes color='red' />
+                      <Badge theme='danger' outline>
+                        Not Paid
+                      </Badge>
                     )}
                   </td>
                   <td>
                     {order.isDelivered ? (
                       order.deliveredAt.substring(0, 10)
                     ) : (
-                      <FaTimes color='red' />
+                      <Badge theme='danger' outline>
+                        Not Delivered
+                      </Badge>
                     )}
                   </td>
                   <td>
                     <LinkContainer to={`/order/${order._id}`}>
-                      <Button className='btn-sm' variant='light'>
+                      <Button size='sm' outline theme='secondary'>
                         Details
                       </Button>
                     </LinkContainer>

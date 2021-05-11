@@ -25,17 +25,7 @@ h2 {
 }
 
 #navi {
-  background: #3a4042;
-}
-
-.inStock {
-  color: green;
-  font-weight: bolder;
-}
-
-.outOfStock {
-  color: red;
-  font-weight: bolder;
+  background: #2c2c2c;
 }
 
 /* #card {
@@ -56,4 +46,13 @@ h2 {
 
 #orders {
   border-left: 1px dotted #3a4042;
+}
+
+#username {
+  color: rgb(217, 255, 0);
+  font-weight: 350;
+}
+
+.center {
+  text-align: center;
 }

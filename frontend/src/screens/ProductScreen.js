@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  Row,
-  Col,
-  Image,
-  ListGroup,
-  Card,
-  Button,
-  Form
-} from 'react-bootstrap';
+import { Row, Col, Image, ListGroup, Form } from 'react-bootstrap';
+import { Button, Card, Badge } from 'shards-react';
 import Rating from '../components/Rating';
 import { HiOutlineArrowNarrowLeft } from 'react-icons/hi';
 import Loader from '../components/Loader';
@@ -79,9 +72,9 @@ const ProductScreen = ({ match, history }) => {
                     <Col>Status:</Col>
                     <Col>
                       {product.countInStock > 0 ? (
-                        <span className='inStock'>In Stock </span>
+                        <Badge theme='success'>In Stock</Badge>
                       ) : (
-                        <span className='outOfStock'>Out Of Stock</span>
+                        <Badge theme='danger'>Out of stock</Badge>
                       )}
                     </Col>
                   </Row>
@@ -109,8 +102,9 @@ const ProductScreen = ({ match, history }) => {
                 <ListGroup.Item>
                   <Button
                     onClick={addToCartHandler}
-                    className=' btn-block'
-                    type='button'
+                    theme='primary'
+                    outline
+                    block
                     disabled={product.countInStock === 0}
                   >
                     Add To Cart
